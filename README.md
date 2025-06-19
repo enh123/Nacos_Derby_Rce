@@ -7,7 +7,7 @@ Nacos Derby未授权RCE   QVD-2024-26473
 ![图片](https://github.com/user-attachments/assets/115ea844-cfaf-4ffa-afa1-b52dede1527a)
 
 
-开始攻击:
+开始攻击(注意多线程可能会把nacos服务打崩):
 ![图片](https://github.com/user-attachments/assets/94ba0707-55a4-4932-8461-7c4e348f83d1)
 
 成功后会创建一个恶意函数,运气好的话几十个请求就可以成功,运气不好的话发几十万个请求才成功也是有可能的
