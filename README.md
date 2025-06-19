@@ -2,6 +2,7 @@
 Nacos Derby未授权RCE
 
 用法:
+
 先开启恶意服务端(要确保受害机能够访问到):
 ![图片](https://github.com/user-attachments/assets/115ea844-cfaf-4ffa-afa1-b52dede1527a)
 
@@ -14,3 +15,7 @@ Nacos Derby未授权RCE
 使用-udf指定之前创建的恶意函数执行命令：
 
 ![图片](https://github.com/user-attachments/assets/0456948c-97fd-4e7a-afd4-6ff806115ba2)
+
+
+批量验证:
+python3 exp.py -f url.txt
