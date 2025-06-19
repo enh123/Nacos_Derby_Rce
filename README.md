@@ -1,2 +1,16 @@
 # Nacos_Derby_Rce
 Nacos Derby未授权RCE
+
+用法:
+先开启恶意服务端(要确保受害机能够访问到):
+![图片](https://github.com/user-attachments/assets/115ea844-cfaf-4ffa-afa1-b52dede1527a)
+
+
+开始攻击:
+![图片](https://github.com/user-attachments/assets/94ba0707-55a4-4932-8461-7c4e348f83d1)
+
+成功后会创建一个恶意函数,运气好的话几十个请求就可以成功,运气不好的话发几十万个请求才成功也是有可能的
+
+使用-udf指定之前创建的恶意函数执行命令：
+
+![图片](https://github.com/user-attachments/assets/0456948c-97fd-4e7a-afd4-6ff806115ba2)
