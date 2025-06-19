@@ -17,9 +17,12 @@ Nacos Derby未授权RCE
 ![图片](https://github.com/user-attachments/assets/0456948c-97fd-4e7a-afd4-6ff806115ba2)
 
 
+有时候创建恶意函数时成功和失败返回的内容是一样的,可以用burpsuite多线程发包然后尝试直接使用-udf指定函数执行命令
+
 批量验证:
 
 python3 exp.py -f url.txt
+
 
 
 参考了以下项目:
