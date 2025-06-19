@@ -20,3 +20,7 @@ Nacos Derby未授权RCE
 批量验证:
 
 python3 exp.py -f url.txt
+
+
+参考了以下项目:
+https://github.com/HACK-THE-WORLD/nacos-poc
